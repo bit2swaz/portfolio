@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --canvas: #050505;
+  --foreground: #f5f5f5;
+  --muted: #b2b2b2;
+  --card: rgba(18, 18, 18, 0.82);
+  --border: rgba(255, 255, 255, 0.14);
+  --shadow-soft: 0 32px 120px rgba(0, 0, 0, 0.45);
+}
+
+.light {
+  color-scheme: light;
+  --canvas: #f7f7f7;
+  --foreground: #101010;
+  --muted: #4c4c4c;
+  --card: rgba(255, 255, 255, 0.82);
+  --border: rgba(0, 0, 0, 0.16);
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.16);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --shadow-soft: var(--shadow-soft);
+  --font-body: var(--font-ubuntu), var(--font-lexend), var(--font-outfit),
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer utilities {
+  .font-body {
+    font-family: var(--font-ubuntu), var(--font-lexend), var(--font-outfit),
+      ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--canvas);
+  color: var(--foreground);
+  font-family: var(--font-ubuntu), var(--font-lexend), var(--font-outfit),
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.01em;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.light ::selection {
+  background: rgba(0, 0, 0, 0.18);
+}
