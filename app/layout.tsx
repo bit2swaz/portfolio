@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lexend, Outfit, Ubuntu } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 
 import { Header } from "@/components/header";
 import { Starfield } from "@/components/starfield";
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body
         className={`${ubuntu.variable} ${lexend.variable} ${outfit.variable} font-body antialiased`}
       >
+        <Analytics />
         <ThemeProvider>
           <Starfield />
           <div className="relative flex min-h-screen flex-col">
