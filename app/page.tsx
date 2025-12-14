@@ -47,7 +47,8 @@ const skills: SkillCategory[] = [
       "Concurrency (Goroutines, Channels)",
       "CI/CD Pipelines",
       "ZFS / Btrfs (File Systems)",
-      "Docker & Containerization"
+      "Docker & Containerization",
+      "Linux Kernel / eBPF"
     ],
   },
   {
@@ -68,6 +69,8 @@ const skills: SkillCategory[] = [
     icon: <Database className="h-5 w-5" />,
     skills: [
       "PostgreSQL (Internals)",
+      "SQLite (WAL Mode)",
+      "BoltDB (LSM Trees)",
       "Prisma ORM",
       "tRPC",
       "Tailwind CSS",
@@ -79,6 +82,14 @@ const skills: SkillCategory[] = [
 ];
 
 const projects: Project[] = [
+  {
+    name: "Aether",
+    description: "A distributed SQL database providing Strong Consistency (CP) via Raft consensus. Decouples storage (SQLite WAL) from interface (Postgres Wire Protocol).",
+    tags: ["Go", "Raft", "SQLite", "Postgres Protocol"],
+    status: "Completed",
+    link: "https://github.com/bit2swaz/aether",
+    highlight: "Zero-downtime snapshots via VACUUM INTO",
+  },
   {
   name: "Orion",
   description:
@@ -95,7 +106,7 @@ const projects: Project[] = [
     tags: ["Go", "Postgres Wire Protocol", "ZFS", "Docker SDK"],
     status: "Completed",
     link: "https://github.com/bit2swaz/prism",
-    highlight: "Database branching in <500ms",
+    highlight: "Database branching in <300ms",
   },
   {
     name: "VelocityCache",
