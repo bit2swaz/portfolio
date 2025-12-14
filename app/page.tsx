@@ -59,9 +59,9 @@ const skills: SkillCategory[] = [
       "TypeScript / JavaScript",
       "Next.js (App Router) & React",
       "Node.js",
-      "Python",
+      "Python (Basic)",
       "SQL",
-      "C/C++ (Basic)",
+      "C/C++",
     ],
   },
   {
