@@ -43,8 +43,8 @@ const skills: SkillCategory[] = [
     skills: [
       "Distributed Systems (Raft, Paxos)",
       "Network Protocols (TCP/UDP, HTTP/2)",
-      "Performance Optimization",
-      "Concurrency (Goroutines, Channels)",
+      "Manual Memory Management",
+      "Concurrency (Goroutines, Pthreads)",
       "CI/CD Pipelines",
       "ZFS / Btrfs (File Systems)",
       "Docker & Containerization",
@@ -55,13 +55,12 @@ const skills: SkillCategory[] = [
     title: "Languages & Runtime",
     icon: <Code2 className="h-5 w-5" />,
     skills: [
+      "C",
       "Go (Golang)",
       "TypeScript / JavaScript",
+      "SQL",
       "Next.js (App Router) & React",
       "Node.js",
-      "Python (Basic)",
-      "SQL",
-      "C/C++",
     ],
   },
   {
@@ -70,10 +69,7 @@ const skills: SkillCategory[] = [
     skills: [
       "PostgreSQL (Internals)",
       "SQLite (WAL Mode)",
-      "BoltDB (LSM Trees)",
-      "Prisma ORM",
-      "tRPC",
-      "Tailwind CSS",
+      "LSM Tree Internals",
       "Express.js",
       "AWS & Cloud Services",
       "Redis"
@@ -82,6 +78,14 @@ const skills: SkillCategory[] = [
 ];
 
 const projects: Project[] = [
+  {
+    name: "Lithos",
+    description: "A production-grade LSM-tree storage engine written from scratch in C. Features Write-Ahead Logging (WAL) for durability, Leveled Compaction, and Snapshot Isolation (MVCC).",
+    tags: ["C11", "LSM-Tree", "Make", "Pthreads"],
+    status: "Building",
+    link: "https://github.com/bit2swaz/lithos",
+    highlight: "72k+ writes/sec & 97k+ reads/sec",
+  },
   {
     name: "Aether",
     description: "A distributed SQL database providing Strong Consistency (CP) via Raft consensus. Decouples storage (SQLite WAL) from interface (Postgres Wire Protocol).",
@@ -117,16 +121,6 @@ const projects: Project[] = [
     link: "https://github.com/bit2swaz/velocity-cache",
     highlight: "231x faster than Turborepo",
   },
-  {
-    name: "CrisisMesh",
-    description:
-      "An offline-first, decentralized mesh network for disaster zones. Features a Dual-Interface (Terminal for Command, Web for Civilians), End-to-End Encryption, and an automated 'Panic Protocol' for SOS routing.",
-    tags: ["Go", "Mesh Networking", "TUI (BubbleTea)", "NaCl Crypto"],
-    status: "Completed",
-    link: "https://github.com/bit2swaz/crisismesh",
-    highlight: "Offline 'Panic Protocol' & Encryption",
-  },
-
 ];
 
 const socialLinks: SocialLink[] = [
@@ -271,13 +265,13 @@ export default function Home() {
         >
           <div className="flex max-w-3xl flex-col items-center gap-6">
             <span className="text-[0.7rem] font-medium uppercase tracking-[0.42em] text-foreground/50">
-              Backend & Systems Dev
+              Backend & Systems Engineer
             </span>
             <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl">
               Wassup, I&apos;m Aditya. I build tools that make devs faster.
             </h1>
             <p className="text-pretty text-lg leading-relaxed text-foreground/80 sm:text-xl">
-              I&apos;m a backend & systems developer in love with speed, DX, and performance. I love building infra/devtools that blend technical depth with minimalist but clean designs.
+              I&apos;m a backend & systems engineer in love with speed, DX, and performance. I love building infra/devtools that blend technical depth with minimalist but clean designs.
             </p>
             <div className="relative mt-12 flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
               <span className="pointer-events-none absolute inset-x-4 top-1/2 h-32 -translate-y-1/2 rounded-full bg-foreground/10 blur-3xl sm:inset-x-6" aria-hidden />
@@ -305,7 +299,7 @@ export default function Home() {
         >
           <div className="flex max-w-2xl flex-col items-center gap-3">
             <span className="text-[0.7rem] font-medium uppercase tracking-[0.42em] text-foreground/50">
-              Selected Work
+              All My Work
             </span>
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Projects
@@ -583,5 +577,3 @@ function MailIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
-
