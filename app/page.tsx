@@ -82,7 +82,7 @@ const projects: Project[] = [
     name: "Lithos",
     description: "A production-grade LSM-tree storage engine written from scratch in C. Features Write-Ahead Logging (WAL) for durability, Leveled Compaction, and Snapshot Isolation (MVCC).",
     tags: ["C11", "LSM-Tree", "Make", "Pthreads"],
-    status: "Building",
+    status: "Completed",
     link: "https://github.com/bit2swaz/lithos",
     highlight: "72k+ writes/sec & 97k+ reads/sec",
   },
