@@ -41,25 +41,25 @@ const skills: SkillCategory[] = [
     title: "Systems & Infrastructure",
     icon: <Server className="h-5 w-5" />,
     skills: [
-      "Distributed Systems (Raft, Paxos)",
+      "Distributed Systems (Raft)",
       "Network Protocols (TCP/UDP, HTTP/2)",
       "Manual Memory Management",
       "Concurrency (Goroutines, Pthreads)",
       "CI/CD Pipelines",
       "ZFS / Btrfs (File Systems)",
       "Docker & Containerization",
-      "Linux Kernel / eBPF"
     ],
   },
   {
     title: "Languages & Runtime",
     icon: <Code2 className="h-5 w-5" />,
     skills: [
-      "C",
+      "Rust",
       "Go (Golang)",
-      "TypeScript / JavaScript",
+      "C/C++",
+      "TypeScript",
       "SQL",
-      "Next.js (App Router) & React",
+      "Next.js & React",
       "Node.js",
     ],
   },
@@ -81,10 +81,18 @@ const projects: Project[] = [
   {
     name: "Lithos",
     description: "A production-grade LSM-tree storage engine written from scratch in C. Features Write-Ahead Logging (WAL) for durability, Leveled Compaction, and Snapshot Isolation (MVCC).",
-    tags: ["C11", "LSM-Tree", "Make", "Pthreads"],
+    tags: ["C", "LSM-Tree", "Make", "Pthreads"],
     status: "Completed",
     link: "https://github.com/bit2swaz/lithos",
     highlight: "72k+ writes/sec & 97k+ reads/sec",
+  },
+  {
+    name: "cold-cli",
+    description: "A security-focused HD Wallet generator in Rust. Implements 'Scorched Earth' memory hygiene (zeroize) to prevent cold-boot attacks and SLIP-0010 for full Phantom/Solflare interoperability.",
+    tags: ["Rust", "Zeroize", "Ed25519", "BIP-39"],
+    status: "Completed",
+    link: "https://github.com/bit2swaz/cold-cli",
+    highlight: "Zeroizes RAM on drop",
   },
   {
     name: "Aether",
@@ -95,31 +103,21 @@ const projects: Project[] = [
     highlight: "Zero-downtime snapshots via VACUUM INTO",
   },
   {
-  name: "Orion",
-  description:
-    "A distributed container orchestrator built from scratch. Collapses the control plane into a single binary using Raft for consensus and Lifeguard-enhanced gossip for failure detection.",
-  tags: ["Go", "Raft Consensus", "SWIM Gossip", "Docker SDK"],
-  status: "Completed",
-  link: "https://github.com/bit2swaz/orion",
-  highlight: "Self-healing cluster in <2s",
+    name: "CrisisMesh",
+    description: "A decentralized, offline-first mesh network using Delay Tolerant Networking (DTN). Uses custom UDP Multicast Gossip and Curve25519 encryption for partition-resilient comms.",
+    tags: ["Go", "UDP/TCP", "NaCl Crypto", "Bubble Tea"],
+    status: "Completed",
+    link: "https://github.com/bit2swaz/crisismesh",
+    highlight: "Guaranteed delivery during partitions",
   },
   {
-    name: "Prism",
+    name: "Orion",
     description:
-      "An ephemeral database proxy that intercepts PostgreSQL wire protocol to instantly fork databases for every feature branch using filesystem-level Copy-on-Write.",
-    tags: ["Go", "Postgres Wire Protocol", "ZFS", "Docker SDK"],
+      "A distributed container orchestrator built from scratch. Collapses the control plane into a single binary using Raft for consensus and Lifeguard-enhanced gossip for failure detection.",
+    tags: ["Go", "Raft Consensus", "SWIM Gossip", "Docker SDK"],
     status: "Completed",
-    link: "https://github.com/bit2swaz/prism",
-    highlight: "Database branching in <300ms",
-  },
-  {
-    name: "VelocityCache",
-    description:
-      "A stateless, self-hosted remote build cache for monorepos. Decouples caching logic from storage to ensure data sovereignty.",
-    tags: ["Go", "Docker", "S3/MinIO", "Systems Design"],
-    status: "Completed",
-    link: "https://github.com/bit2swaz/velocity-cache",
-    highlight: "231x faster than Turborepo",
+    link: "https://github.com/bit2swaz/orion",
+    highlight: "Self-healing cluster in <2s",
   },
 ];
 
