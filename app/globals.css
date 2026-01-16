@@ -1,82 +1,134 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  color-scheme: dark;
-  --canvas: #050505;
-  --foreground: #f5f5f5;
-  --muted: #b2b2b2;
-  --card: rgba(18, 18, 18, 0.82);
-  --border: rgba(255, 255, 255, 0.14);
-  --shadow-soft: 0 32px 120px rgba(0, 0, 0, 0.45);
-}
-
-.light {
-  color-scheme: light;
-  --canvas: #f7f7f7;
-  --foreground: #101010;
-  --muted: #4c4c4c;
-  --card: rgba(255, 255, 255, 0.82);
-  --border: rgba(0, 0, 0, 0.16);
-  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.16);
-}
-
-@theme inline {
-  --color-canvas: var(--canvas);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-card: var(--card);
-  --color-border: var(--border);
-  --shadow-soft: var(--shadow-soft);
-  --font-body: var(--font-ubuntu), var(--font-lexend), var(--font-outfit),
-    ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-
-@layer utilities {
-  .font-body {
-    font-family: var(--font-ubuntu), var(--font-lexend), var(--font-outfit),
-      ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  }
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: var(--canvas);
-  color: var(--foreground);
-  font-family: var(--font-ubuntu), var(--font-lexend), var(--font-outfit),
-    ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  text-rendering: optimizeLegibility;
-  letter-spacing: -0.01em;
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
 }
 
 html {
-  scroll-behavior: smooth;
+  min-width: 360px;
+  overflow-x: hidden;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.prose .anchor {
+  @apply absolute invisible no-underline;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
 }
 
-button {
-  font: inherit;
-  color: inherit;
-  background: none;
-  border: none;
+.anchor:hover {
+  @apply visible;
 }
 
-.shadow-soft {
-  box-shadow: var(--shadow-soft);
+.prose a {
+  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
 }
 
-::selection {
-  background: rgba(255, 255, 255, 0.2);
+.prose .anchor:after {
+  @apply text-neutral-300 dark:text-neutral-700;
+  content: "#";
 }
 
-.light ::selection {
-  background: rgba(0, 0, 0, 0.18);
+.prose *:hover > .anchor {
+  @apply visible;
+}
+
+.prose pre {
+  @apply border border-neutral-800 !bg-neutral-900;
+}
+
+.prose code {
+  @apply text-neutral-800 dark:text-neutral-200 px-1 py-0.5 border border-neutral-100 dark:border-neutral-800 rounded-lg bg-neutral-100 dark:bg-neutral-900;
+}
+
+.prose pre code {
+  @apply text-neutral-800 dark:text-neutral-200 p-0;
+  border: initial;
+  line-height: 1.5;
+}
+
+.prose img {
+  @apply m-0;
+}
+
+.prose h2,
+h3,
+h4 {
+  @apply font-semibold;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  @apply text-neutral-50;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.prose .tweet a {
+  text-decoration: inherit;
+  font-weight: inherit;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  html {
+    min-width: 320px;
+  }
+
+  .prose {
+    font-size: 0.9rem;
+  }
+
+  .prose p {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+  }
+
+  .prose li {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+}
+
+/* Prevent text size adjustment on mobile */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 768px) {
+  a, button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Line clamping utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
