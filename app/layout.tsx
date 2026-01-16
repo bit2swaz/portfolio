@@ -1,37 +1,47 @@
-import type { Metadata } from "next";
-import { Lexend, Outfit, Ubuntu } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next"
-
-import { Header } from "@/components/header";
-import { Starfield } from "@/components/starfield";
-import { ThemeProvider } from "@/components/ThemeProvider";
-
 import "./globals.css";
-
-const ubuntu = Ubuntu({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  display: "swap",
-  variable: "--font-ubuntu",
-});
-
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-lexend",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-outfit",
-});
+import { Analytics } from "@vercel/analytics/react";
+import clsx from "clsx";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import type { Metadata } from "next";
+import Particles from "../components/particles";
+import { Footer } from "./section/footer";
+import { Navbar } from "./section/navbar";
 
 export const metadata: Metadata = {
-  title: "bit2swaz - portfolio",
-  description: "The workbench, experiments, blogs and projects crafted by bit2swaz.",
+  metadataBase: new URL("https://bit2swaz.dev"),
+  title: {
+    default: "Aditya | bit2swaz",
+    template: "%s | bit2swaz",
+  },
+  description: "Backend & Systems Engineer. Builder of distributed systems and infrastructure.",
+  authors: [{ name: "Aditya" }],
+  creator: "bit2swaz",
+  publisher: "bit2swaz",
+  category: "Technology",
+  openGraph: {
+    title: "Aditya | bit2swaz",
+    description: "Backend & Systems Engineer. Builder of distributed systems and infrastructure.",
+    url: "https://bit2swaz.dev",
+    siteName: "bit2swaz",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    title: "Aditya | bit2swaz",
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -40,20 +50,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${ubuntu.variable} ${lexend.variable} ${outfit.variable} font-body antialiased`}
-      >
+    <html
+      lang="en"
+      className={clsx(
+        "text-black bg-white dark:text-white dark:bg-[#111010]",
+        GeistSans.variable,
+        GeistMono.variable
+      )}
+    >
+      <body className="antialiased max-w-2xl mb-10 flex flex-col md:flex-row mx-3 sm:mx-4 mt-4 sm:mt-6 md:mt-8 lg:mx-auto">
         <Analytics />
-        <ThemeProvider>
-          <Starfield />
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">
-              <div className="relative z-10 flex-1">{children}</div>
-            </main>
-          </div>
-        </ThemeProvider>
+        <main className="flex-auto min-w-0 mt-4 sm:mt-6 flex flex-col px-0 sm:px-2 md:px-0">
+          <Particles
+            className="absolute inset-0 -z-10 animate-fade-in"
+            quantity={300}
+          />
+          <Navbar />
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   );
